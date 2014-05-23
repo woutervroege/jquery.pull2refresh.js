@@ -12,17 +12,24 @@
     </head>
     <body>
 
-        <div id="content"></div>
+            <div id="content"></div>
 
         <script>
             $("#content").pull2refresh('init', {
                 loaderImage: "../images/loader.gif", /* optional */
                 loaderClass: "pull2refresh-loader", /* optional */
+                triggerAtY: 200, /* optional */
                 start: function() {
                     asyncFunction(function() {
                         $("#content").pull2refresh('hide');
                     })
                 }
+            });
+
+            $("#container").scroll(function(e) {
+                console.log("test!");
+                e.preventDefault();
+                e.stopPropagation();
             });
 
             function asyncFunction(callback) {
