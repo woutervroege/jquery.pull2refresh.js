@@ -1,0 +1,13 @@
+/*
+ * @package jquery.pull2refresh.js
+ * @copyright Copyright(c) 2014 Wouter Vroege. <info AT woutervroege DOT nl>
+ * @author Wouter Vtoege <wouter AT woutervroege DOT nl>
+ * @author Olmo Kramer <olmo DOT kramer AT gmail DOT com>
+ * @licence https://github.com/woutervroege/jquery.pull2refresh.js/blob/master/LICENSE MIT License
+ */
+
+.pull2refresh-loader {
+    position: absolute;
+    margin: 60px 0 0 -38px;
+    left:50%;
+}

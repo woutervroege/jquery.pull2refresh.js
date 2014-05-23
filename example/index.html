@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>jquery.pull2refresh.js | by Wouter Vroege</title>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="style.css" type="text/css"/>
+        <link rel="stylesheet" href="../jquery.pull2refresh.css" type="text/css"/>
+        <script src="../js/jquery-11.1.1.min.js"></script>
+        <script src="../js/jquery-1.10.4-ui.min.js"></script>
+        <script src="../js/jquery.ui.touch-punch.min.js"></script>
+        <script src="../js/jquery.velocity.min.js"></script>
+        <script src="../jquery.pull2refresh.js"></script>
+    </head>
+    <body>
+
+        <div id="content"></div>
+
+        <script>
+            $("#content").pull2refresh('init', {
+                loaderImage: "../images/loader.gif", /* optional */
+                loaderClass: "pull2refresh-loader", /* optional */
+                start: function() {
+                    asyncFunction(function() {
+                        $("#content").pull2refresh('hide');
+                    })
+                }
+            });
+
+            function asyncFunction(callback) {
+                setTimeout(function() {
+                    callback();
+                }, 1000)
+            }
+        </script>
+    </body>
+</html>
