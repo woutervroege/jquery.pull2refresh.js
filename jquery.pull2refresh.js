@@ -65,6 +65,7 @@
 					});
 				},
 				drag: function(event, ui) {
+                    $("." + ELEM.config.loaderClass).show();
 					if (ui.helper.position().top < 0) {
 						console.log("disabling drag...");
 						$(ELEM).draggable("disable");
@@ -92,6 +93,7 @@
 			$(ELEM).stop().velocity({
 				top: 0
 			}, 600, 'easeOutCirc', function() {
+                $("." + ELEM.config.loaderClass).hide();
 				isHiding = false;
 			});
 		},
