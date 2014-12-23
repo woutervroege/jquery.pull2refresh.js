@@ -1,3 +1,5 @@
+"use strict";
+
 /*
  * @package jquery.pull2refresh.js
  * @copyright Copyright(c) 2014 Wouter Vroege. <info AT woutervroege DOT nl>
@@ -5,8 +7,6 @@
  * @author Olmo Kramer <olmo DOT kramer AT gmail DOT com>
  * @licence https://github.com/woutervroege/jquery.pull2refresh.js/blob/master/LICENSE MIT License
  */
-
-"use strict";
 
 (function($) {
 
@@ -44,10 +44,7 @@
 				},
 				stop: function(event, ui) {
 					$("." + ELEM.config.loaderClass).attr('src', ELEM.config.loaderImage);
-					console.log(ui.helper.position().top);
 					if (ui.helper.position().top < 0) {
-						console.log("disabling drag...");
-						$(ELEM).draggable("disable");
 						return;
 					}
 					if (isHiding) {
@@ -65,9 +62,8 @@
 					});
 				},
 				drag: function(event, ui) {
-                    $("." + ELEM.config.loaderClass).show();
+					$("." + ELEM.config.loaderClass).show();
 					if (ui.helper.position().top < 0) {
-						console.log("disabling drag...");
 						$(ELEM).draggable("disable");
 						return;
 					}
@@ -78,30 +74,22 @@
 			});
 
 			$(document).scroll(function(e) {
-				if ($("body").scrollTop() < 1) {
-					console.log("enabling drag...");
-					$(ELEM).draggable("enable");
-				}
+				$(ELEM).draggable("enable");
 			});
-
-			$(ELEM).draggable("disable");
-
 		},
 		hide: function() {
-			$(ELEM).draggable("disable");
 			isHiding = true;
 			$(ELEM).stop().velocity({
 				top: 0
 			}, 600, 'easeOutCirc', function() {
-                $("." + ELEM.config.loaderClass).hide();
+				$("." + ELEM.config.loaderClass).hide();
 				isHiding = false;
+				$(ELEM).draggable("enable");
 			});
 		},
 		disable: function() {
 			$(ELEM).draggable("disable");
 		}
-
-
 	};
 
 
